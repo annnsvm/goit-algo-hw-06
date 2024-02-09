@@ -33,14 +33,17 @@ def run_bfs(graph):
             if current_node not in visited:
                 visited.add(current_node)
                 for neighbor in graph.neighbors(current_node):
-                    queue.append((neighbor, path + [neighbor]))
-        paths.append(path)
+                    new_path = list(path)  # Створюємо новий шлях для додавання до черги
+                    new_path.append(neighbor)
+                    queue.append((neighbor, new_path))
+                    paths.append(new_path)  # Додаємо кожен шлях в кінець обходу
 
     for node in graph.nodes:
         if node not in visited:
             bfs(node)
 
     return paths
+
 
 
 def run_dijkstra(graph, start_node):
