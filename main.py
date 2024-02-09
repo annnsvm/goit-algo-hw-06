@@ -33,17 +33,18 @@ def run_bfs(graph):
             if current_node not in visited:
                 visited.add(current_node)
                 for neighbor in graph.neighbors(current_node):
-                    new_path = list(path)  # Створюємо новий шлях для додавання до черги
+                    # Створюємо новий шлях для додавання до черги
+                    new_path = list(path)
                     new_path.append(neighbor)
                     queue.append((neighbor, new_path))
-                    paths.append(new_path)  # Додаємо кожен шлях в кінець обходу
+                    # Додаємо кожен шлях в кінець обходу
+                    paths.append(new_path)
 
     for node in graph.nodes:
         if node not in visited:
             bfs(node)
 
     return paths
-
 
 
 def run_dijkstra(graph, start_node):
@@ -139,7 +140,8 @@ def graf_algo_tests(matrix, points=[], weighted=False, info=False):
         print("========================================================")
 
         pos = nx.spring_layout(G, seed=42)
-        edge_labels = {(i, j): label["weight"] for i, j, label in G.edges(data=True)}
+        edge_labels = {(i, j): label["weight"]
+                       for i, j, label in G.edges(data=True)}
 
         plt.figure(figsize=(10, 8))
         nx.draw(
@@ -167,7 +169,8 @@ def graf_algo_tests(matrix, points=[], weighted=False, info=False):
 
 
 def main():
-    points = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"]
+    points = ["A", "B", "C", "D", "E", "F", "G",
+              "H", "I", "J", "K", "L", "M", "N", "O"]
 
     m_sm_1 = [
         [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
